@@ -1,5 +1,3 @@
-#include <Arduino.h>
-
 // Wire Slave Receiver
 // by Nicholas Zambetti <http://www.zambetti.com>
 
@@ -11,22 +9,32 @@
 
 // This example code is in the public domain.
 
-
+#include <Arduino.h>
 #include <Wire.h>
-
-
+#define ADDRESS 0x42
+byte response = 0;
 void receiveEvent(int howMany) {
-  while (1 < Wire.available()) { // loop through all but the last
-    char c = Wire.read(); // receive byte as a character
-    Serial.print(c);         // print the character
-  }
   int x = Wire.read();    // receive byte as an integer
-  Serial.println(x);         // print the integer
+  if(x<100){
+    response = 4;
+
+  } 
+  else{
+    response = 2;
+  }
+  
 }
 
+void requestEvent(){
+  Wire.write(response);
+  Serial.println(response);
+}
+
+
 void setup() {
-  Wire.begin(8);                // join I2C bus with address #8
+  Wire.begin(ADDRESS);                // join I2C bus with address #8
   Wire.onReceive(receiveEvent); // register event
+  Wire.onRequest(requestEvent); 
   Serial.begin(9600);           // start serial for output
 }
 

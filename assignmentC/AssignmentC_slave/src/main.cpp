@@ -5,26 +5,27 @@
 #define INB 22
 #define MIN 23
 #define MAX 24
-#define min(a,b) a<b ? a : b
-#define max(a,b) a>b ? a : b
 
 int a = 0;
 int b = 0;
-
+int reg = 0;
 
 void ReceiveFunction(int num)
 {
-  int reg = Wire.read();
+  reg = Wire.read();
   int val = Wire.read();
-  Wire.write(val);
 
   switch (reg)
   {
   case INA:
     a = val;
+    Serial.println(a);
+
     break;
   case INB:
     b = val;
+    Serial.println(b);
+
     break;
   default:
     break;
@@ -34,7 +35,6 @@ void ReceiveFunction(int num)
 void RequestFunc()
 {
   int response = 0;
-  int reg = Wire.read();
   switch (reg)
   {
   case INA:
@@ -50,7 +50,7 @@ void RequestFunc()
     response = max(a,b);
     break;
   }
-  
+  Wire.write(response);
 }
 
 void setup()

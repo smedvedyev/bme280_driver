@@ -17,7 +17,7 @@ void ReadFromSlave(int address){
   Wire.beginTransmission(SLAVE_ADDRESS);
   Wire.write(address);
   Wire.endTransmission();
-  Wire.requestFrom(SLAVE_ADDRESS, 8);
+  Wire.requestFrom(SLAVE_ADDRESS, 1);
   int response = Wire.read();
   Serial.println(response);
 }
@@ -30,5 +30,5 @@ void loop(){
   WriteToSlave(INB, 12);
   ReadFromSlave(MIN);
   ReadFromSlave(MAX);
-  delay(100);
+  delay(500);
 }

@@ -14,7 +14,9 @@
 #define ADDRESS 0x42
 byte response = 0;
 void receiveEvent(int howMany) {
-  int x = Wire.read();    // receive byte as an integer
+  int x = Wire.read();  
+  Serial.println(x);
+
   if(x<100){
     response = 4;
 
@@ -27,7 +29,6 @@ void receiveEvent(int howMany) {
 
 void requestEvent(){
   Wire.write(response);
-  Serial.println(response);
 }
 
 

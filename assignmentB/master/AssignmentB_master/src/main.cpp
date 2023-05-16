@@ -12,16 +12,19 @@
 #include <Arduino.h>
 #include <Wire.h>
 #define SLAVE_ADDRESS 0x42
-void setup() {
-  Wire.begin(); // join I2C bus (address optional for master)
+void setup()
+{
+  Wire.begin(); 
+  Serial.begin(9600);
 }
 
-byte x = 0;
+byte x = 80;
 byte response = 0;
-void loop() {
-  Wire.beginTransmission(SLAVE_ADDRESS); // transmit to device #8
-  Wire.write(x);              // sends one byte
-  Wire.endTransmission();    // stop transmitting
+void loop()
+{
+  Wire.beginTransmission(SLAVE_ADDRESS); 
+  Wire.write(x);                     
+  Wire.endTransmission();                
   Wire.requestFrom(SLAVE_ADDRESS, 8);
   response = Wire.read();
   Serial.println(response);

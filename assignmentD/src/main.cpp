@@ -7,8 +7,11 @@ void setup()
   Wire.begin();
   Serial.begin(9600);
   startTime = millis();
+  //Reset sensor
   BME280_Reset();
+  //Set humidity oversampling to x1
   BME280_CtrlHum(0x01);
+  //Set temperature and pressure oversampling to x1
   BME280_CtrlMeas(0x27);
 }
 

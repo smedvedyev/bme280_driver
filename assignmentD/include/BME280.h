@@ -7,6 +7,7 @@
 #define BME280_RESET 0xE0
 #define BME280_COMPLETE_RESET 0xB6
 
+//Compensators registers addresses
 #define DIG_T1 0x88
 #define DIG_T2 0x8A
 #define DIG_T3 0x8C

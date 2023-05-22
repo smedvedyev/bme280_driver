@@ -10,11 +10,11 @@ int a = 0;
 int b = 0;
 int reg = 0;
 
+//Executes whenever something is received from master
 void ReceiveFunction(int num)
 {
   reg = Wire.read();
   int val = Wire.read();
-
   switch (reg)
   {
   case INA:
@@ -32,6 +32,7 @@ void ReceiveFunction(int num)
   }
 }
 
+//Executes whenever master requests data from the address mentioned in ReceivedFunction()
 void RequestFunc()
 {
   int response = 0;

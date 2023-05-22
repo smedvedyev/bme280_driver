@@ -2,6 +2,8 @@
 #include <Wire.h>
 #include "BME280.h"
 
+//IMPORTANT: All magical numbers are provided by datasheets
+
 uint8_t BME280_GetID()
 {
     Wire.beginTransmission(BME_ADDRESS);
@@ -38,7 +40,6 @@ uint32_t ReadAll(Data type)
 
     uint32_t hum_msb = Wire.read();
     uint32_t hum_lsb = Wire.read();
-
     uint32_t pressure = (press_msb << 12) | (press_lsb << 4) | (press_xlsb >> 4);
     uint32_t temperature = (temp_msb << 12) | (temp_lsb << 4) | (temp_xlsb >> 4);
     uint32_t humidity = (hum_msb << 8) | hum_lsb;
@@ -73,6 +74,7 @@ uint16_t GetTwoBytes(uint8_t address)
 
 uint16_t GetTwoBytesHum(uint8_t address, int type)
 {
+
     Wire.beginTransmission(BME_ADDRESS);
     Wire.write(address);
     Wire.endTransmission();

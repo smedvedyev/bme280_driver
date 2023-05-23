@@ -7,6 +7,7 @@ void WriteToSlave(int address, int message)
     Wire.write(message);
     Wire.endTransmission();
 }
+
 int ReadFromSlave(int address)
 {
     Wire.beginTransmission(SLAVE_ADDRESS);
@@ -16,6 +17,7 @@ int ReadFromSlave(int address)
     int response = Wire.read();
     return response;
 }
+
 bool MessageInterval(unsigned long start){
     return (millis()- start) > MESSAGE_INTERVAL;
 }

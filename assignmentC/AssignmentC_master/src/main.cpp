@@ -13,7 +13,9 @@ void loop()
     startTime = millis();
     WriteToSlave(INA, 4);
     WriteToSlave(INB, 12);
+    Serial.print("Min: ");
     ReadFromSlave(MIN);
+    Serial.print("Max: ");
     ReadFromSlave(MAX);
   }
 }

@@ -2,7 +2,7 @@
 #include <Wire.h>
 #include "BME280.h"
 
-//IMPORTANT: All magical numbers are provided by datasheets
+//IMPORTANT: All magic numbers are provided by datasheets
 
 uint8_t BME280_GetID()
 {

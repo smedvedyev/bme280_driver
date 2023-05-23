@@ -45,10 +45,10 @@ void RequestFunc()
     response = b;
     break;
   case MAX:
-    response = min(a,b);
+    response = max(a,b);
     break;
   case MIN:
-    response = max(a,b);
+    response = min(a,b);
     break;
   }
   Wire.write(response);

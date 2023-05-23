@@ -20,15 +20,18 @@ void loop()
   Serial.print(BME280_ReadTemperature() * 0.01);
   Serial.println(" °C");
   Serial.print("Pressure: ");
-  Serial.print(BME280_ReadPressure() / (256.0*100));
+  Serial.print(BME280_ReadPressure() / (256.0 * 100));
   Serial.println(" hPa");
   Serial.print("Humidity: ");
   Serial.print(BME280_ReadHumidity() / 1024.00);
   Serial.println(" %");
   Serial.println();
 
-  Serial.println(BME280_CtrlHum(),HEX);
+  Serial.print("Humidity oversampling: ");
+  Serial.println(BME280_CtrlHum(), HEX);
+  Serial.print("Temperature & pressure oversampling: ");
   Serial.println(BME280_CtrlMeas(), HEX);
+  Serial.println();
 
   delay(1000);
 }
